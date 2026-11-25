@@ -24,7 +24,7 @@ const process = [
 ]
 
 const year = new Date().getFullYear()
-const whatsappUrl = 'https://wa.me/6281234567890?text=' + encodeURIComponent('Halo EzyTekno, saya ingin konsultasi kebutuhan solusi digital untuk bisnis saya.')
+const whatsappUrl = 'https://wa.me/6282244492100?text=' + encodeURIComponent('Halo EzyTekno, saya ingin konsultasi kebutuhan solusi digital untuk bisnis saya.')
 </script>
 
 <template>
@@ -306,8 +306,8 @@ const whatsappUrl = 'https://wa.me/6281234567890?text=' + encodeURIComponent('Ha
           <div>
             <h4 class="text-xs font-extrabold tracking-widest text-white">HUBUNGI KAMI</h4>
             <div class="mt-5 flex flex-col gap-3 text-xs">
-              <a :href="whatsappUrl" target="_blank" rel="noopener noreferrer" class="transition hover:text-cyan-300">WhatsApp: +62 812-3456-7890</a>
-              <a href="mailto:hello@ezytekno.com" class="transition hover:text-cyan-300">hello@ezytekno.com</a>
+              <a :href="whatsappUrl" target="_blank" rel="noopener noreferrer" class="transition hover:text-cyan-300">WhatsApp: +62 822-4449-2100</a>
+              <a href="mailto:marketing@ezytekno.co.id" class="transition hover:text-cyan-300">marketing@ezytekno.co.id</a>
               <span>Surabaya, Jawa Timur, Indonesia</span>
             </div>
           </div>
