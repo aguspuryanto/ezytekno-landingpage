@@ -1,6 +1,4 @@
 <script setup lang="ts">
-const mobileMenuOpen = ref(false)
-
 const services = [
   { number: '01', icon: '⌘', title: 'Website Development', description: 'Website company profile, landing page, portal, dan platform digital yang cepat, responsif, serta mudah dikelola.', tags: ['Company Profile', 'E-Commerce', 'Web App'] },
   { number: '02', icon: '▣', title: 'Mobile Application', description: 'Aplikasi Android dan iOS untuk mendekatkan layanan bisnis kepada pelanggan dan tim operasional.', tags: ['Android', 'iOS', 'Cross Platform'] },
@@ -23,47 +21,12 @@ const process = [
   { step: '04', title: 'Launch & Support', text: 'Melakukan deployment, dokumentasi, dan dukungan pengembangan.' }
 ]
 
-const year = new Date().getFullYear()
-const whatsappUrl = 'https://wa.me/6282244492100?text=' + encodeURIComponent('Halo EzyTekno, saya ingin konsultasi kebutuhan solusi digital untuk bisnis saya.')
+const whatsappUrl = whatsappLink()
 </script>
 
 <template>
   <div class="overflow-hidden">
-    <!-- Navigation -->
-    <header class="absolute inset-x-0 top-0 z-50 border-b border-white/10">
-      <nav class="container-shell flex h-[82px] items-center justify-between">
-        <a href="#home" class="flex items-center gap-3" aria-label="EzyTekno home">
-          <span class="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-cyan-300 to-blue-500 text-lg font-extrabold text-slate-950 shadow-lg shadow-cyan-500/20">E</span>
-          <span class="leading-tight text-white">
-            <span class="block font-display text-[17px] font-extrabold tracking-tight">EzyTekno</span>
-            <span class="block text-[9px] font-semibold tracking-[.2em] text-slate-400">SOLUSI NUSANTARA</span>
-          </span>
-        </a>
-
-        <div class="hidden items-center gap-8 text-[13px] font-semibold text-slate-300 lg:flex">
-          <a class="transition hover:text-cyan-300" href="#about">Tentang Kami</a>
-          <a class="transition hover:text-cyan-300" href="#services">Layanan</a>
-          <a class="transition hover:text-cyan-300" href="#products">Produk</a>
-          <a class="transition hover:text-cyan-300" href="#process">Proses</a>
-          <a class="transition hover:text-cyan-300" href="#contact">Kontak</a>
-        </div>
-
-        <a :href="whatsappUrl" target="_blank" rel="noopener noreferrer" class="hidden rounded-full bg-cyan-400 px-5 py-3 text-xs font-extrabold text-slate-950 transition hover:bg-cyan-300 lg:inline-flex">Konsultasi Gratis <span class="ml-2">↗</span></a>
-        <button class="grid h-10 w-10 place-items-center rounded-lg border border-white/20 text-white lg:hidden" aria-label="Buka menu" @click="mobileMenuOpen = !mobileMenuOpen">
-          <span class="text-xl">{{ mobileMenuOpen ? '×' : '☰' }}</span>
-        </button>
-      </nav>
-      <div v-if="mobileMenuOpen" class="border-t border-white/10 bg-[#071426] px-6 py-5 text-sm text-slate-200 lg:hidden">
-        <div class="container-shell flex flex-col gap-4">
-          <a href="#about" @click="mobileMenuOpen = false">Tentang Kami</a>
-          <a href="#services" @click="mobileMenuOpen = false">Layanan</a>
-          <a href="#products" @click="mobileMenuOpen = false">Produk</a>
-          <a href="#process" @click="mobileMenuOpen = false">Proses</a>
-          <a href="#contact" @click="mobileMenuOpen = false">Kontak</a>
-          <a :href="whatsappUrl" target="_blank" rel="noopener noreferrer" class="mt-2 rounded-full bg-cyan-400 px-5 py-3 text-center font-bold text-slate-950">Konsultasi Gratis ↗</a>
-        </div>
-      </div>
-    </header>
+    <SiteHeader />
 
     <!-- Hero -->
     <section id="home" class="relative isolate min-h-[760px] overflow-hidden bg-[#071426] pt-[82px] text-white">
@@ -200,7 +163,10 @@ const whatsappUrl = 'https://wa.me/6282244492100?text=' + encodeURIComponent('Ha
             <span class="eyebrow">Digital products</span>
             <h2 class="mt-5 text-3xl font-extrabold text-slate-900 sm:text-[42px]">Produk digital dari ekosistem EzyTekno.</h2>
           </div>
-          <p class="max-w-sm text-sm leading-7 text-slate-500">Kami juga mengembangkan produk digital yang menjawab kebutuhan spesifik berbagai sektor bisnis.</p>
+          <div class="max-w-sm">
+            <p class="text-sm leading-7 text-slate-500">Kami juga mengembangkan produk digital yang menjawab kebutuhan spesifik berbagai sektor bisnis.</p>
+            <NuxtLink to="/products" class="mt-3 inline-flex items-center text-xs font-extrabold text-cyan-700 transition hover:text-slate-900">Lihat semua produk <span class="ml-2">→</span></NuxtLink>
+          </div>
         </div>
         <div class="mt-12 grid gap-5 md:grid-cols-3">
           <article v-for="product in products" :key="product.name" class="card-hover overflow-hidden rounded-2xl border border-slate-200 bg-white">
@@ -286,39 +252,6 @@ const whatsappUrl = 'https://wa.me/6282244492100?text=' + encodeURIComponent('Ha
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-[#071426] pb-8 pt-14 text-slate-400">
-      <div class="container-shell">
-        <div class="grid gap-10 border-b border-white/10 pb-12 md:grid-cols-[1.4fr_.7fr_.9fr]">
-          <div>
-            <a href="#home" class="flex items-center gap-3 text-white">
-              <span class="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-cyan-300 to-blue-500 font-display text-lg font-extrabold text-slate-950">E</span>
-              <span><span class="block font-display text-lg font-extrabold">EzyTekno</span><span class="block text-[9px] font-semibold tracking-[.2em] text-slate-500">SOLUSI NUSANTARA</span></span>
-            </a>
-            <p class="mt-5 max-w-sm text-xs leading-7">Partner teknologi untuk membantu bisnis bertransformasi melalui solusi digital yang tepat guna, terintegrasi, dan berkelanjutan.</p>
-          </div>
-          <div>
-            <h4 class="text-xs font-extrabold tracking-widest text-white">NAVIGASI</h4>
-            <div class="mt-5 flex flex-col gap-3 text-xs">
-              <a href="#about" class="transition hover:text-cyan-300">Tentang Kami</a><a href="#services" class="transition hover:text-cyan-300">Layanan</a><a href="#products" class="transition hover:text-cyan-300">Produk</a><a href="#process" class="transition hover:text-cyan-300">Proses Kerja</a>
-            </div>
-          </div>
-          <div>
-            <h4 class="text-xs font-extrabold tracking-widest text-white">HUBUNGI KAMI</h4>
-            <div class="mt-5 flex flex-col gap-3 text-xs">
-              <a :href="whatsappUrl" target="_blank" rel="noopener noreferrer" class="transition hover:text-cyan-300">WhatsApp: +62 822-4449-2100</a>
-              <a href="mailto:marketing@ezytekno.co.id" class="transition hover:text-cyan-300">marketing@ezytekno.co.id</a>
-              <span>Surabaya, Jawa Timur, Indonesia</span>
-            </div>
-          </div>
-        </div>
-        <div class="flex flex-col justify-between gap-3 pt-7 text-[10px] sm:flex-row">
-          <span>© {{ year }} PT EzyTekno Solusi Nusantara. All rights reserved.</span>
-          <span>Built with purpose. Powered by technology.</span>
-        </div>
-      </div>
-    </footer>
-
-    <a :href="whatsappUrl" target="_blank" rel="noopener noreferrer" aria-label="Chat WhatsApp" class="fixed bottom-5 right-5 z-40 grid h-14 w-14 place-items-center rounded-full bg-emerald-500 text-2xl text-white shadow-xl shadow-emerald-900/20 transition hover:scale-105 hover:bg-emerald-400">✆</a>
+    <SiteFooter />
   </div>
 </template>
